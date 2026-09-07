@@ -1,0 +1,125 @@
+/* ==========================================================================
+   motion-shared.css
+   --------------------------------------------------------------------------
+   Motion yang dipakai BERSAMA banyak komponen — bukan milik satu section.
+
+   Isi:
+   1. Theme transition (ganti light/dark)
+   2. Status pulse dot (header section, profile live, dll.)
+   3. Scroll reveal (.reveal) — komponen <Reveal />
+   4. prefer-reduced-motion untuk item di file ini
+
+   Jangan taruh di sini:
+   - ambient twinkle     → ambient.css
+   - hero entrance       → home.css
+   - ticker scroll       → ticker.css
+   - navbar boot         → navbar.css
+   - experience timeline → experience.css
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Theme transition
+   Dipakai saat user toggle tema (View Transitions API).
+   Circle expand dari koordinat --x / --y (di-set dari JS theme toggle).
+   Durasi 600ms = token theme-transition di design system.
+   -------------------------------------------------------------------------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: theme-circle 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes theme-circle {
+  from {
+    clip-path: circle(0 at var(--x) var(--y));
+  }
+  to {
+    clip-path: circle(var(--r) at var(--x) var(--y));
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Status pulse dot
+   Class: .status-pulse-dot
+   Dipakai di eyebrow section ([About], [Projects], …) dan badge "live".
+   Infinite 2.4s = token breathing/pulse di design system.
+   Warna glow pakai --success (status positif), bukan primary.
+   -------------------------------------------------------------------------- */
+
+.status-pulse-dot {
+  animation: statusDotPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes statusDotPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 6px var(--success);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Scroll reveal
+   Class: .reveal + .reveal-visible
+   Dipakai komponen <Reveal /> — fade + naik 8px, 500ms.
+   Delay per-instance lewat CSS var --reveal-delay (di-set dari prop delay).
+   Hero TIDAK memakai ini (hero punya entrance page-load sendiri di home.css).
+   -------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+  transition:
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Reduced motion (hanya yang didefinisikan di file ini)
+   Design system: hormati prefers-reduced-motion tanpa kecuali.
+   Jangan pakai * { animation-duration: 0.01ms } global — terlalu agresif.
+   Animasi section-specific (hero, ambient, nav) di-handle di file masing-masing.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
+  .status-pulse-dot {
+    animation: none;
+    opacity: 1;
+  }
+
+  .reveal,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

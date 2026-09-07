@@ -1,0 +1,68 @@
+.container-site {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-site {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-site {
+    padding-inline: 2rem;
+  }
+}
+
+.reading-content {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------
+ * Section spacing
+ * -------------------------------------------------- */
+
+.section-y {
+  padding-block: 3rem;
+}
+
+.section-y-lg {
+  padding-block: 4rem;
+}
+
+.section-y-xl {
+  padding-block: 5rem;
+}
+
+@media (min-width: 640px) {
+  .section-y {
+    padding-block: 4rem;
+  }
+
+  .section-y-lg {
+    padding-block: 4.5rem;
+  }
+
+  .section-y-xl {
+    padding-block: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 4.5rem;
+  }
+
+  .section-y-lg {
+    padding-block: 5rem;
+  }
+
+  .section-y-xl {
+    padding-block: 6rem;
+  }
+}

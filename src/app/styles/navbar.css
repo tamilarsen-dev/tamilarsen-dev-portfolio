@@ -1,0 +1,131 @@
+/* ==========================================================================
+   navbar.css
+   --------------------------------------------------------------------------
+   Boot animation DesktopNavbar saja.
+
+   Alur:
+   1. .nav-shell       → fade/slide masuk
+   2. .nav-shell-inner → lebar chip (logo) → full (is-expanded)
+   3. .nav-boot-item   → stagger item setelah linksReady
+
+   MobileNavbar tidak memakai class ini (langsung full bar).
+   Surface chrome / glow / underline = Tailwind di komponen.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Keyframes
+   -------------------------------------------------------------------------- */
+
+@keyframes nav-shell-boot {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes nav-item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Shell wrapper — opacity boot
+   -------------------------------------------------------------------------- */
+
+.nav-shell {
+  opacity: 0;
+  animation: nav-shell-boot 0.55s cubic-bezier(0.22, 1, 0.36, 1) 40ms forwards;
+}
+
+.nav-shell-inner {
+  width: 4rem;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  transition:
+    width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease;
+}
+
+.nav-shell-inner.is-expanded {
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .nav-shell {
+    animation-duration: 0.35s;
+    animation-delay: 0ms;
+  }
+
+  .nav-shell-inner {
+    width: 3.25rem;
+    transition:
+      width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease;
+  }
+
+  .nav-cluster.is-visible .nav-boot-item {
+    animation-duration: 0.28s;
+    animation-delay: calc(var(--nav-i, 0) * 32ms);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cluster — jangan fade parent (stagger anak harus kelihatan)
+   -------------------------------------------------------------------------- */
+
+.nav-cluster {
+  pointer-events: none;
+}
+
+.nav-cluster.is-visible {
+  pointer-events: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Stagger items — --nav-i di-set dari TSX
+   -------------------------------------------------------------------------- */
+
+.nav-boot-item {
+  opacity: 0;
+}
+
+.nav-cluster.is-visible .nav-boot-item {
+  animation: nav-item-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--nav-i, 0) * 55ms);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced motion — langsung full, tanpa boot
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-shell,
+  .nav-shell-inner {
+    opacity: 1;
+    width: 100%;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+
+  .nav-cluster {
+    pointer-events: auto;
+  }
+
+  .nav-boot-item {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}

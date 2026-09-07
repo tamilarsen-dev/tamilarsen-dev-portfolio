@@ -1,0 +1,7 @@
+<!-- public/favicon.svg -->
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="48" fill="#7A1F2B"/>
+  <path d="M117 201H91L159.5 55L228 201H202L193 182H135L145 161H183L159 109L117 201Z" fill="#FAFAFA"/>
+  <path d="M81 201H70V78H28V55H140.5V67.5L136 78H95V173L81 201Z" fill="#FAFAFA"/>
+  <circle cx="208" cy="48" r="20" fill="#16A34A" stroke="#7A1F2B" stroke-width="6"/>
+</svg>

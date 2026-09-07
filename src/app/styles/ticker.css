@@ -1,0 +1,21 @@
+@keyframes tickerScroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-scroll {
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: tickerScroll 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker-scroll {
+    animation: none;
+  }
+}

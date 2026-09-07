@@ -1,0 +1,37 @@
+@keyframes ambientTwinkle {
+  0%,
+  100% {
+    opacity: calc(
+      var(--ambient-min) + (var(--ambient-max) - var(--ambient-min)) *
+        var(--dot-strength, 0.7) * 0.35
+    );
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: calc(
+      var(--ambient-min) + (var(--ambient-max) - var(--ambient-min)) *
+        var(--dot-strength, 0.7)
+    );
+    transform: scale(1.1);
+  }
+}
+
+.animate-ambient-twinkle {
+  transform-origin: center;
+  animation: ambientTwinkle 4.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ambient-twinkle {
+    animation: none;
+    opacity: calc(
+      (var(--ambient-min) + var(--ambient-max)) * 0.5 * var(--dot-strength, 0.7)
+    );
+  }
+}
+
+.dark .animate-ambient-twinkle {
+  /* primary agak digeser ke accent-text biar kontras di kanvas gelap */
+  fill: color-mix(in oklab, var(--primary) 70%, var(--accent-text) 30%);
+}
