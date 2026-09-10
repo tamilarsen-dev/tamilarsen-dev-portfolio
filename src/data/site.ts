@@ -89,6 +89,6 @@ export const siteConfig = {
   assets: {
     favicon: "/favicon.svg",
     // ogImage: "/og-image.png",
-    resume: "/resume.pdf",
+    resume: "resume/resume.pdf",
   },
 } as const;
