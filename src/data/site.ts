@@ -89,6 +89,6 @@ export const siteConfig = {
   assets: {
     favicon: "/favicon.svg",
     // ogImage: "/og-image.png",
-    resume: "resume/resume.pdf",
+    resume: "resume/T_Tamil_Arsen_Resume.pdf",
   },
 } as const;
