@@ -92,7 +92,7 @@ export function Footer() {
 
             <p className="mt-(--space-sm) max-w-md text-sm leading-6 text-muted-foreground">
               Computer Science graduate focused on full-stack web development,
-              with a strong interest in backend engineering and software
+              with a particular interest in backend engineering and software
               systems.
             </p>
 

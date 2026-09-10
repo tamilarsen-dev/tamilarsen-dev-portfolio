@@ -1,31 +1,33 @@
 export const experiences = [
   {
-    role: "Backend Software Engineer",
-    company: "Company Name",
-    period: "2025 — Present",
+    role: "Backend Developer Intern",
+    company: "Kantor Gubernur Sumatera Utara",
+    period: "Mar 2025 — Jul 2025",
     description:
-      "Describe the backend services you contributed to, the problems you worked on, and the technical decisions you made.",
-    tech: ["Node.js", "TypeScript", "PostgreSQL", "Docker"],
-    type: "full-time",
+      "Managed incoming and outgoing documents within the Bureau of Community Welfare. Towards the end of the internship, contributed as a Backend Developer to a document management system designed to improve the bureau’s document management process.",
+    tech: ["JavaScript", "Node.js", "Express.js", "PostgreSQL"],
+    type: "internship",
     scope: "Backend Engineering",
   },
+
   {
-    role: "Software Engineering Intern",
-    company: "Company Name",
-    period: "2024 — 2025",
+    role: "Front-End Developer Intern",
+    company: "RSUD Dr. Pirngadi",
+    period: "Aug 2024 — Dec 2024",
     description:
-      "Describe the features, services, or engineering tasks you contributed to and how they fit into the wider application.",
-    tech: ["Node.js", "Express", "Redis"],
+      "Contributed to the development of web and desktop applications, including Pirngadi Training Centre, Customer Satisfaction Survey Website, and E-Reader Desktop App. Focused on implementing application interfaces using HTML, CSS, JavaScript, and Bootstrap.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     type: "internship",
-    scope: "Application Development",
+    scope: "Front-End Development",
   },
+
   {
-    role: "Peer Tutor",
-    company: "University Name",
-    period: "2024 — 2025",
+    role: "Bachelor of Computer Science",
+    company: "Universitas Prima Indonesia",
+    period: "Sep 2022 — Aug 2026",
     description:
-      "Supported students in understanding core computer science concepts and applying them to practical assignments.",
-    tech: ["Algorithms", "Data Structures", "OOP"],
+      "Completed a Bachelor of Computer Science degree with a GPA of 3.91/4.00, with a focus on software development and practical experience in web applications, backend services, databases, and software engineering fundamentals.",
+    tech: ["Software Development", "Algorithms", "Data Structures", "OOP"],
     type: "education",
     scope: "Computer Science",
   },

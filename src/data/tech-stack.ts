@@ -35,13 +35,13 @@ export const techStackData = {
   title: "A system is built in layers.",
 
   description:
-    "A technical foundation organized by responsibility, from programming and runtime to data, interfaces, and delivery.",
+    "A technical foundation organized by responsibility, from programming and runtime to data, interfaces, and infrastructure.",
 
   philosophy: {
     label: "Engineering principles",
 
     description:
-      "Prefer simple primitives, explicit boundaries, predictable data flow, and reproducible infrastructure.",
+      "Prefer simple primitives, explicit boundaries, predictable data flow, and reproducible environments.",
   },
 
   layers: [
@@ -73,7 +73,7 @@ export const techStackData = {
       number: "02",
       category: "Application Runtime",
       description:
-        "Runtime and web framework used to build backend services and HTTP APIs.",
+        "Runtime and framework I use to build backend services and HTTP APIs.",
       items: [
         {
           name: "Node.js",
@@ -92,7 +92,7 @@ export const techStackData = {
       number: "03",
       category: "Data Systems",
       description:
-        "Persistent storage and fast-access data infrastructure used by backend services.",
+        "Database and data infrastructure used for persistent storage and application performance.",
       items: [
         {
           name: "PostgreSQL",
@@ -111,7 +111,7 @@ export const techStackData = {
       number: "04",
       category: "Interface Layer",
       description:
-        "Client-side technologies I use to understand and integrate with backend systems.",
+        "Technologies I use to build web interfaces and cross-platform applications.",
       items: [
         {
           name: "Next.js",

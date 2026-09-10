@@ -65,8 +65,8 @@ export function ContactSection() {
               </div>
 
               <p className="max-w-md text-sm leading-6 text-muted-foreground md:pb-1">
-                For opportunities, technical discussions, and collaboration on
-                software projects.
+                For software engineering opportunities, technical discussions,
+                and collaboration on web projects.
               </p>
             </div>
           </div>
@@ -110,14 +110,16 @@ export function ContactSection() {
                   </span>
 
                   <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                    Backend engineering, systems, and technical collaboration.
+                    Software engineering, full-stack development, and backend
+                    systems.
                   </h3>
 
                   <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
-                    I’m open to backend engineering opportunities, technical
-                    discussions, and collaborations where I can contribute while
-                    continuing to grow as an engineer. Email is the best way to
-                    reach me.
+                    I’m open to software engineering opportunities, particularly
+                    in full-stack web development and backend engineering. I’m
+                    also open to technical discussions and software projects
+                    where I can contribute while continuing to grow as an
+                    engineer. Email is the best way to reach me.
                   </p>
 
                   {/* Email endpoint */}

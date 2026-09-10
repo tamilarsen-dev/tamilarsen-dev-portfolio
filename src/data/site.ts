@@ -9,18 +9,20 @@ export const siteConfig = {
   name: "T. Tamil Arsen",
   shortName: "Arsen",
 
-  title: "Full-Stack Software Engineer",
+  title: "Software Engineer",
 
   description:
-    "Portfolio of T. Tamil Arsen, a Computer Science graduate focused on full-stack web development, with a strong interest in backend engineering and software systems.",
+    "Portfolio of T. Tamil Arsen, a Computer Science graduate focused on full-stack web development, with a particular interest in backend engineering and software systems.",
 
-  url: "https://tamilarsen.dev",
+  url: process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000",
 
   locale: "en_US",
 
   author: {
     name: "T. Tamil Arsen",
-    jobTitle: "Full-Stack Software Engineer",
+    jobTitle: "Software Engineer",
   },
 
   social: {
@@ -33,6 +35,14 @@ export const siteConfig = {
       href: "https://linkedin.com/in/tamilarsen-dev",
       label: "LinkedIn",
       value: "linkedin.com/in/tamilarsen-dev",
+    },
+    instagram: {
+      href: "https://www.instagram.com/your-instagram",
+      label: "Instagram",
+    },
+    twitter: {
+      href: "https://twitter.com/your-twitter",
+      label: "Twitter",
     },
     email: {
       href: "mailto:TamilArsen88@gmail.com",
@@ -78,7 +88,7 @@ export const siteConfig = {
 
   assets: {
     favicon: "/favicon.svg",
-    ogImage: "/og-image.png",
+    // ogImage: "/og-image.png",
     resume: "/resume.pdf",
   },
 } as const;

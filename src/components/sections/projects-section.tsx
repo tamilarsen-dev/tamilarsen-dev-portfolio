@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 import { Reveal } from "@/components/shared/reveal";
@@ -63,11 +64,13 @@ export function ProjectsSection() {
                     {/* Media */}
                     <div className="relative aspect-16/10 w-full overflow-hidden bg-foreground/[0.035]">
                       {/* Placeholder */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/25 transition-colors duration-200 group-hover:text-muted-foreground/40">
-                          {project.slug}
-                        </span>
-                      </div>
+                      <Image
+                        src={project.images[0].src}
+                        alt={project.images[0].alt}
+                        fill
+                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
 
                       {/* Subtle technical glow */}
                       <div

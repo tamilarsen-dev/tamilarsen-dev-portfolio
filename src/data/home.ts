@@ -2,7 +2,7 @@ export const homeData = {
   greeting: "Hi, I'm",
 
   description:
-    "Computer Science graduate focused on full-stack web development, with a strong interest in backend engineering and building software systems through clear design and strong fundamentals.",
+    "Software Engineer focused on full-stack web development, with a particular interest in backend engineering, API design, and building reliable software systems.",
 
   actions: {
     projects: {

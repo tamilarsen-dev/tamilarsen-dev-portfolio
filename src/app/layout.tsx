@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
     locale: siteConfig.locale,
-    images: [
-      {
-        url: siteConfig.assets.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} - ${siteConfig.title}`,
-      },
-    ],
+    // images: [
+    //   {
+    //     url: siteConfig.assets.ogImage,
+    //     width: 1200,
+    //     height: 630,
+    //     alt: `${siteConfig.name} - ${siteConfig.title}`,
+    //   },
+    // ],
   },
 
   twitter: {

@@ -1,8 +1,8 @@
 export const contactData = {
   connectionContext: [
-    "Backend engineering",
     "Software engineering",
-    "Technical collaboration",
+    "Full-stack web development",
+    "Backend engineering",
   ],
 
   availability: "Open to opportunities",

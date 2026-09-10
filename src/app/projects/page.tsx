@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { Reveal } from "@/components/shared/reveal";
@@ -64,12 +65,15 @@ export default function ProjectsPage() {
                     href={`/projects/${project.slug}`}
                     className="group flex min-w-0 flex-col overflow-hidden rounded-md border border-foreground/10 bg-card/50 transition-[background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-[0_12px_40px_-20px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
+                    {/* Project image */}
                     <div className="relative aspect-16/10 w-full overflow-hidden bg-foreground/[0.035]">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/25 transition-colors duration-200 group-hover:text-muted-foreground/40">
-                          {project.slug}
-                        </span>
-                      </div>
+                      <Image
+                        src={project.images[0].src}
+                        alt={project.images[0].alt}
+                        fill
+                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
 
                       <div className="absolute left-3 top-3">
                         <span

@@ -20,7 +20,7 @@ export const aboutData = {
     },
     {
       key: "FOCUS",
-      value: "Backend software engineering",
+      value: "Full-stack web development, backend-focused",
     },
     {
       key: "APPROACH",
@@ -29,7 +29,7 @@ export const aboutData = {
     {
       key: "CURRENTLY",
       value:
-        "Building backend projects and deepening software engineering fundamentals",
+        "Building web applications and backend projects while deepening software engineering fundamentals",
     },
     {
       key: "AVAILABILITY",
