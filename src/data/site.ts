@@ -14,9 +14,7 @@ export const siteConfig = {
   description:
     "Portfolio of T. Tamil Arsen, a Computer Science graduate focused on full-stack web development, with a particular interest in backend engineering and software systems.",
 
-  url: process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000",
+  url: "https://tamilarsen-dev-portfolio.vercel.app",
 
   locale: "en_US",
 

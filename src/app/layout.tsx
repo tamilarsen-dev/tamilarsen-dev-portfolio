@@ -54,6 +54,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
     locale: siteConfig.locale,
+    
     // images: [
     //   {
     //     url: siteConfig.assets.ogImage,
