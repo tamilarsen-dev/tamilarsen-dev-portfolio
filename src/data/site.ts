@@ -34,14 +34,14 @@ export const siteConfig = {
       label: "LinkedIn",
       value: "linkedin.com/in/tamilarsen-dev",
     },
-    instagram: {
-      href: "https://www.instagram.com/your-instagram",
-      label: "Instagram",
-    },
-    twitter: {
-      href: "https://twitter.com/your-twitter",
-      label: "Twitter",
-    },
+    // instagram: {
+    //   href: "https://www.instagram.com/your-instagram",
+    //   label: "Instagram",
+    // },
+    // twitter: {
+    //   href: "https://twitter.com/your-twitter",
+    //   label: "Twitter",
+    // },
     email: {
       href: "mailto:TamilArsen88@gmail.com",
       label: "Email",
@@ -87,6 +87,6 @@ export const siteConfig = {
   assets: {
     favicon: "/favicon.svg",
     // ogImage: "/og-image.png",
-    resume: "resume/T_Tamil_Arsen_Resume.pdf",
+    resume: "/resume/T_Tamil_Arsen_Resume.pdf",
   },
 } as const;

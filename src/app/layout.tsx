@@ -31,10 +31,14 @@ export const metadata: Metadata = {
 
   title: {
     default: `${siteConfig.name} — ${siteConfig.title}`,
-    template: `%s — ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
 
   description: siteConfig.description,
+
+  alternates: {
+    canonical: "/",
+  },
 
   robots: {
     index: true,
@@ -54,7 +58,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
     locale: siteConfig.locale,
-    
+
     // images: [
     //   {
     //     url: siteConfig.assets.ogImage,
@@ -107,7 +111,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="relative flex min-h-screen flex-col overflow-x-clip">
+          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
             {/* Structured data */}
             <script
               type="application/ld+json"
