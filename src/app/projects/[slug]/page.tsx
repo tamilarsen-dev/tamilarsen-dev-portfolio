@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
-import { Reveal } from "@/components/shared/reveal";
+import { PageEnter } from "@/components/shared/page-enter";
 import { getProject, projects, statusLabel } from "@/data/projects";
 
 type Props = {
@@ -58,8 +58,9 @@ export default async function ProjectDetailPage({ params }: Readonly<Props>) {
     <div className="relative">
       <div className="container-site py-12 sm:py-16 lg:py-20">
         {/* Back + Header */}
-        <Reveal>
-          <header>
+
+        <header>
+          <PageEnter delay={0}>
             <Link
               href="/#projects"
               className={[
@@ -77,8 +78,10 @@ export default async function ProjectDetailPage({ params }: Readonly<Props>) {
 
               <span>/projects</span>
             </Link>
+          </PageEnter>
 
-            <div className="mt-(--space-xl) max-w-4xl">
+          <div className="mt-(--space-xl) max-w-4xl">
+            <PageEnter delay={40}>
               {/* Meta */}
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-text">
@@ -116,17 +119,23 @@ export default async function ProjectDetailPage({ params }: Readonly<Props>) {
                   {statusLabel[project.status]}
                 </span>
               </div>
+            </PageEnter>
 
+            <PageEnter tone="heading" delay={90}>
               {/* Title */}
               <h1 className="mt-(--space-md) text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
                 {project.title}
               </h1>
+            </PageEnter>
 
+            <PageEnter delay={140}>
               {/* Description */}
               <p className="mt-(--space-md) max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                 {project.description}
               </p>
+            </PageEnter>
 
+            <PageEnter delay={180}>
               {/* Tech + actions */}
               <div className="mt-(--space-lg) flex flex-col gap-5">
                 <div className="flex flex-wrap gap-1.5">
@@ -167,12 +176,12 @@ export default async function ProjectDetailPage({ params }: Readonly<Props>) {
                   </div>
                 )}
               </div>
-            </div>
-          </header>
-        </Reveal>
+            </PageEnter>
+          </div>
+        </header>
 
         {/* Hero */}
-        <Reveal delay={60}>
+        <PageEnter delay={200}>
           <figure className="mt-12 overflow-hidden rounded-md border border-foreground/10 bg-card/30 sm:mt-14 lg:mt-16">
             <div className="relative aspect-video w-full">
               <Image
@@ -185,148 +194,152 @@ export default async function ProjectDetailPage({ params }: Readonly<Props>) {
               />
             </div>
           </figure>
-        </Reveal>
+        </PageEnter>
 
         {/* Content */}
-        <Reveal delay={120}>
-          <div className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,768px)_minmax(0,240px)] lg:items-start lg:justify-between lg:gap-16">
-            {/* Reading content */}
-            <article className="min-w-0">
-              <div className="space-y-14">
-                {/* Overview */}
+
+        <div className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,768px)_minmax(0,240px)] lg:items-start lg:justify-between lg:gap-16">
+          {/* Reading content */}
+          <PageEnter tone="soft" delay={260} as="article" className="min-w-0">
+            <div className="space-y-14">
+              {/* Overview */}
+              <section>
+                <SectionLabel>Overview</SectionLabel>
+
+                <p className="mt-4 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
+                  {project.longDescription}
+                </p>
+              </section>
+
+              {/* Highlights */}
+              <section>
+                <SectionLabel>Highlights</SectionLabel>
+
+                <ul className="mt-5 space-y-3.5">
+                  {project.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex items-start gap-3 text-[15px] leading-7 text-muted-foreground sm:text-base"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-success shadow-[0_0_8px_currentColor]"
+                      />
+
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Gallery */}
+              {project.images.length > 1 && (
                 <section>
-                  <SectionLabel>Overview</SectionLabel>
+                  <SectionLabel>Gallery</SectionLabel>
 
-                  <p className="mt-4 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
-                    {project.longDescription}
-                  </p>
-                </section>
-
-                {/* Highlights */}
-                <section>
-                  <SectionLabel>Highlights</SectionLabel>
-
-                  <ul className="mt-5 space-y-3.5">
-                    {project.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="flex items-start gap-3 text-[15px] leading-7 text-muted-foreground sm:text-base"
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    {project.images.slice(1).map((image) => (
+                      <figure
+                        key={image.alt}
+                        className="group overflow-hidden rounded-md border border-foreground/10 bg-card/30"
                       >
-                        <span
-                          aria-hidden="true"
-                          className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-success shadow-[0_0_8px_currentColor]"
-                        />
-
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                {/* Gallery */}
-                {project.images.length > 1 && (
-                  <section>
-                    <SectionLabel>Gallery</SectionLabel>
-
-                    <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                      {project.images.slice(1).map((image) => (
-                        <figure
-                          key={image.alt}
-                          className="group overflow-hidden rounded-md border border-foreground/10 bg-card/30"
-                        >
-                          <div className="relative aspect-4/3 w-full overflow-hidden">
-                            <Image
-                              src={image.src}
-                              alt={image.alt}
-                              fill
-                              sizes="(max-width: 640px) 100vw, 384px"
-                              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                            />
-                          </div>
-                        </figure>
-                      ))}
-                    </div>
-                  </section>
-                )}
-
-                {/* Technical notes */}
-                <section>
-                  <SectionLabel>Technical notes</SectionLabel>
-
-                  <div className="mt-4 space-y-5 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
-                    {project.technicalNotes.map((note) => (
-                      <p key={note}>{note}</p>
+                        <div className="relative aspect-4/3 w-full overflow-hidden">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            sizes="(max-width: 640px) 100vw, 384px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          />
+                        </div>
+                      </figure>
                     ))}
                   </div>
                 </section>
-              </div>
-            </article>
+              )}
 
-            {/* Sidebar */}
-            <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-              {/* Stack */}
-              <div className="rounded-md border border-foreground/10 bg-card/40 p-5">
-                <h2 className="font-mono text-[10px] font-semibold uppercase tracking-widest text-foreground">
-                  Stack
-                </h2>
+              {/* Technical notes */}
+              <section>
+                <SectionLabel>Technical notes</SectionLabel>
 
-                <div className="mt-(--space-md) flex flex-wrap gap-1.5">
-                  {project.tech.map((technology) => (
-                    <span
-                      key={technology}
-                      className="rounded-md border border-foreground/10 bg-background/50 px-2 py-1 font-mono text-[10px] text-muted-foreground"
-                    >
-                      {technology}
-                    </span>
+                <div className="mt-4 space-y-5 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
+                  {project.technicalNotes.map((note) => (
+                    <p key={note}>{note}</p>
                   ))}
                 </div>
+              </section>
+            </div>
+          </PageEnter>
+
+          {/* Sidebar */}
+          <PageEnter
+            tone="soft"
+            delay={320}
+            as="aside"
+            className="space-y-6 lg:sticky lg:top-24 lg:self-start"
+          >
+            {/* Stack */}
+            <div className="rounded-md border border-foreground/10 bg-card/40 p-5">
+              <h2 className="font-mono text-[10px] font-semibold uppercase tracking-widest text-foreground">
+                Stack
+              </h2>
+
+              <div className="mt-(--space-md) flex flex-wrap gap-1.5">
+                {project.tech.map((technology) => (
+                  <span
+                    key={technology}
+                    className="rounded-md border border-foreground/10 bg-background/50 px-2 py-1 font-mono text-[10px] text-muted-foreground"
+                  >
+                    {technology}
+                  </span>
+                ))}
               </div>
+            </div>
 
-              {/* Links */}
-              {(project.github || project.demo) && (
-                <div className="rounded-md border border-foreground/10 bg-card/40 p-5">
-                  <h2 className="font-mono text-[10px] font-semibold uppercase tracking-widest text-foreground">
-                    Links
-                  </h2>
+            {/* Links */}
+            {(project.github || project.demo) && (
+              <div className="rounded-md border border-foreground/10 bg-card/40 p-5">
+                <h2 className="font-mono text-[10px] font-semibold uppercase tracking-widest text-foreground">
+                  Links
+                </h2>
 
-                  <div className="mt-(--space-md) flex flex-col gap-3">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
-                      >
-                        Source code
-                        <ExternalLink
-                          aria-hidden="true"
-                          size={13}
-                          className="transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                        />
-                      </a>
-                    )}
+                <div className="mt-(--space-md) flex flex-col gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+                    >
+                      Source code
+                      <ExternalLink
+                        aria-hidden="true"
+                        size={13}
+                        className="transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  )}
 
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
-                      >
-                        Live demo
-                        <ExternalLink
-                          aria-hidden="true"
-                          size={13}
-                          className="transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                        />
-                      </a>
-                    )}
-                  </div>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+                    >
+                      Live demo
+                      <ExternalLink
+                        aria-hidden="true"
+                        size={13}
+                        className="transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  )}
                 </div>
-              )}
-            </aside>
-          </div>
-        </Reveal>
+              </div>
+            )}
+          </PageEnter>
+        </div>
       </div>
     </div>
   );

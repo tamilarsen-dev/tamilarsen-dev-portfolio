@@ -87,12 +87,18 @@ export function ProjectsSection() {
                       <div className="absolute left-3 top-3">
                         <span
                           className={[
-                            "inline-flex items-center gap-1.5 rounded-full border px-2 py-1",
+                            "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1",
                             "font-mono text-[9px] font-medium uppercase tracking-[0.08em]",
                             "backdrop-blur-sm",
                             isActive
-                              ? "border-success/25 bg-background/60 text-success"
-                              : "border-foreground/10 bg-background/60 text-muted-foreground/70",
+                              ? [
+                                  "border-success/30 bg-white/90 text-success shadow-sm",
+                                  "dark:border-success/25 dark:bg-background/60 dark:text-success",
+                                ].join(" ")
+                              : [
+                                  "border-foreground/10 bg-white/90 text-muted-foreground",
+                                  "dark:bg-background/60 dark:text-muted-foreground/70",
+                                ].join(" "),
                           ].join(" ")}
                         >
                           <span

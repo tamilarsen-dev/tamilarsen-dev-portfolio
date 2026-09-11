@@ -1,0 +1,63 @@
+/* ==========================================================================
+   page-enter — detail routes (writing, projects)
+   Load once. Product-calm. Header settle + body soft fade.
+   ========================================================================== */
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes page-enter-heading {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes page-enter-soft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-enter {
+  animation: page-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--page-enter-delay, 0ms);
+}
+
+.page-enter-heading {
+  animation: page-enter-heading 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--page-enter-delay, 0ms);
+}
+
+.page-enter-soft {
+  animation: page-enter-soft 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--page-enter-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .page-enter-heading,
+  .page-enter-soft {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
