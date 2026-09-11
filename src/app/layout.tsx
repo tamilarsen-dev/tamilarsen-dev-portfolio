@@ -111,7 +111,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+          <div className="relative flex min-h-screen flex-col overflow-x-clip">
             {/* Structured data */}
             <script
               type="application/ld+json"
