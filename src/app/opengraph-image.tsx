@@ -28,11 +28,13 @@ async function loadFonts() {
 export default async function OpengraphImage() {
   const { regular, bold } = await loadFonts();
 
-  const dotPattern = `data:image/svg+xml,${encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-      <circle cx="16" cy="16" r="1.5" fill="#2E2E31" />
-    </svg>
-  `)}`;
+  const svg = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+    <circle cx="16" cy="16" r="1.5" fill="#2E2E31" />
+  </svg>
+`;
+
+  const dotPattern = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
   return new ImageResponse(
     <div
