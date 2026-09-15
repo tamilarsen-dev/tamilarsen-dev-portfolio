@@ -9,30 +9,21 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 async function loadFonts() {
-  const [regular, bold] = await Promise.all([
-    fetch(
-      new URL(
-        "./opengraph-image-font/IBMPlexMono-Regular.ttf",
-        import.meta.url,
-      ),
-    ).then((res) => res.arrayBuffer()),
+  const regular = await fetch(
+    new URL("./opengraph-image-font/IBMPlexMono-Regular.ttf", import.meta.url),
+  ).then((res) => res.arrayBuffer());
 
-    fetch(
-      new URL("./opengraph-image-font/IBMPlexSans-Bold.ttf", import.meta.url),
-    ).then((res) => res.arrayBuffer()),
-  ]);
-
-  return { regular, bold };
+  return { regular };
 }
 
 export default async function OpengraphImage() {
-  const { regular, bold } = await loadFonts();
+  const { regular } = await loadFonts();
 
   const svg = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-    <circle cx="16" cy="16" r="1.5" fill="#2E2E31" />
-  </svg>
-`;
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+      <circle cx="16" cy="16" r="1.5" fill="#2E2E31" />
+    </svg>
+  `;
 
   const dotPattern = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
@@ -120,7 +111,7 @@ export default async function OpengraphImage() {
           style={{
             display: "flex",
             fontWeight: 700,
-            fontFamily: "IBM Plex Sans",
+            fontFamily: "IBM Plex Mono",
             fontSize: 72,
             letterSpacing: -1.5,
             lineHeight: 1,
@@ -138,7 +129,7 @@ export default async function OpengraphImage() {
             color: "#A1A1AA",
             fontSize: 20,
             fontWeight: 700,
-            fontFamily: "IBM Plex Sans",
+            fontFamily: "IBM Plex Mono",
             letterSpacing: 5,
             marginTop: 18,
           }}
@@ -177,7 +168,7 @@ export default async function OpengraphImage() {
               style={{
                 color: "#CE6A75",
                 fontWeight: 700,
-                fontFamily: "IBM Plex Sans",
+                fontFamily: "IBM Plex Mono",
               }}
             >
               reliable&nbsp;
@@ -193,7 +184,7 @@ export default async function OpengraphImage() {
               style={{
                 color: "#CE6A75",
                 fontWeight: 700,
-                fontFamily: "IBM Plex Sans",
+                fontFamily: "IBM Plex Mono",
               }}
             >
               clean
@@ -210,7 +201,7 @@ export default async function OpengraphImage() {
             marginTop: 36,
             fontSize: 20,
             fontWeight: 700,
-            fontFamily: "IBM Plex Sans",
+            fontFamily: "IBM Plex Mono",
             color: "#F4F4F5",
             letterSpacing: 0.3,
           }}
@@ -297,12 +288,6 @@ export default async function OpengraphImage() {
           name: "IBM Plex Mono",
           data: regular,
           weight: 400,
-          style: "normal",
-        },
-        {
-          name: "IBM Plex Sans",
-          data: bold,
-          weight: 700,
           style: "normal",
         },
       ],
