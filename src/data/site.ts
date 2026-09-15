@@ -14,7 +14,7 @@ export const siteConfig = {
   description:
     "Portfolio of T. Tamil Arsen, a Computer Science graduate focused on full-stack web development, with a particular interest in backend engineering and software systems.",
 
-  url: "https://tamilarsen-dev-portfolio.vercel.app",
+  url: "https://tamil-arsen.dev/",
 
   locale: "en_US",
 

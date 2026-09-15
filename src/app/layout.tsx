@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} — ${siteConfig.title}`,
     template: `%s — ${siteConfig.name}`,
   },
 
@@ -76,6 +76,23 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.author.name,
+  jobTitle: siteConfig.author.jobTitle,
+  url: siteConfig.url,
+  sameAs: [siteConfig.social.github.href, siteConfig.social.linkedin.href],
+  knowsAbout: [
+    "Full-Stack Web Development",
+    "Backend Engineering",
+    "Software Systems",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+  ],
+};
+
 export const viewport: Viewport = {
   themeColor: [
     {
@@ -87,15 +104,6 @@ export const viewport: Viewport = {
       color: "#141414",
     },
   ],
-};
-
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: siteConfig.author.name,
-  jobTitle: siteConfig.author.jobTitle,
-  url: siteConfig.url,
-  sameAs: [siteConfig.social.github.href, siteConfig.social.linkedin.href],
 };
 
 export default function RootLayout({

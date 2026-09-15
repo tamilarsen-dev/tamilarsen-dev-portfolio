@@ -1,8 +1,11 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
+
 export const alt = "T. Tamil Arsen — Software Engineer";
+
 export const size = { width: 1200, height: 630 };
+
 export const contentType = "image/png";
 
 async function loadFonts() {
@@ -13,8 +16,9 @@ async function loadFonts() {
         import.meta.url,
       ),
     ).then((res) => res.arrayBuffer()),
+
     fetch(
-      new URL("./opengraph-image-font/IBMPlexMono-Bold.ttf", import.meta.url),
+      new URL("./opengraph-image-font/IBMPlexSans-Bold.ttf", import.meta.url),
     ).then((res) => res.arrayBuffer()),
   ]);
 
@@ -23,6 +27,14 @@ async function loadFonts() {
 
 export default async function OpengraphImage() {
   const { regular, bold } = await loadFonts();
+
+  const svg = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+    <circle cx="16" cy="16" r="1.5" fill="#2E2E31" />
+  </svg>
+`;
+
+  const dotPattern = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
   return new ImageResponse(
     <div
@@ -33,9 +45,7 @@ export default async function OpengraphImage() {
         flexDirection: "column",
         position: "relative",
         backgroundColor: "#141414",
-        backgroundImage:
-          "radial-gradient(circle, #2E2E31 1.5px, transparent 1.5px)",
-        backgroundSize: "32px 32px",
+        backgroundImage: `url("${dotPattern}")`,
       }}
     >
       {/* Left accent bar */}
@@ -84,16 +94,20 @@ export default async function OpengraphImage() {
             style={{
               color: "#B33A47",
               fontSize: 20,
-              fontWeight: 600,
+              fontWeight: 700,
+              fontFamily: "IBM Plex Mono",
               marginRight: 8,
             }}
           >
             &gt;
           </span>
+
           <span
             style={{
               color: "#84848C",
               fontSize: 20,
+              fontWeight: 400,
+              fontFamily: "IBM Plex Mono",
               letterSpacing: 1.2,
             }}
           >
@@ -105,15 +119,16 @@ export default async function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 72,
             fontWeight: 700,
+            fontFamily: "IBM Plex Sans",
+            fontSize: 72,
             letterSpacing: -1.5,
             lineHeight: 1,
+            gap: 16,
           }}
         >
-          <span style={{ color: "#B33A47" }}>T.</span>
-          <span style={{ color: "#F4F4F5", marginLeft: 12 }}>Tamil </span>
-          <span style={{ color: "#B33A47" }}> Arsen</span>
+          <span style={{ color: "#F4F4F5" }}>T. Tamil</span>
+          <span style={{ color: "#B33A47" }}>Arsen</span>
         </div>
 
         {/* Title */}
@@ -122,7 +137,8 @@ export default async function OpengraphImage() {
             display: "flex",
             color: "#A1A1AA",
             fontSize: 20,
-            fontWeight: 600,
+            fontWeight: 700,
+            fontFamily: "IBM Plex Sans",
             letterSpacing: 5,
             marginTop: 18,
           }}
@@ -148,37 +164,42 @@ export default async function OpengraphImage() {
             display: "flex",
             flexDirection: "column",
             fontSize: 24,
+            fontWeight: 400,
+            fontFamily: "IBM Plex Mono",
             color: "#F4F4F5",
             lineHeight: 1.45,
           }}
         >
           <div style={{ display: "flex" }}>
-            Building{" "}
+            <span>Building&nbsp;</span>
+
             <span
               style={{
-                color: "#B33A47",
-                fontWeight: 600,
-                marginLeft: 8,
-                marginRight: 8,
+                color: "#CE6A75",
+                fontWeight: 700,
+                fontFamily: "IBM Plex Sans",
               }}
             >
-              reliable
-            </span>{" "}
-            web applications
+              reliable&nbsp;
+            </span>
+
+            <span>web applications</span>
           </div>
+
           <div style={{ display: "flex" }}>
-            and backend services with{" "}
+            <span>and backend services with&nbsp;</span>
+
             <span
               style={{
-                color: "#B33A47",
-                fontWeight: 600,
-                marginLeft: 8,
-                marginRight: 8,
+                color: "#CE6A75",
+                fontWeight: 700,
+                fontFamily: "IBM Plex Sans",
               }}
             >
               clean
             </span>
-            , maintainable code.
+
+            <span>, maintainable code.</span>
           </div>
         </div>
 
@@ -188,17 +209,45 @@ export default async function OpengraphImage() {
             display: "flex",
             marginTop: 36,
             fontSize: 20,
-            fontWeight: 500,
+            fontWeight: 700,
+            fontFamily: "IBM Plex Sans",
             color: "#F4F4F5",
             letterSpacing: 0.3,
           }}
         >
           <span>Node.js</span>
-          <span style={{ color: "#B33A47", margin: "0 10px" }}>·</span>
+
+          <span
+            style={{
+              color: "#B33A47",
+              margin: "0 10px",
+            }}
+          >
+            ·
+          </span>
+
           <span>TypeScript</span>
-          <span style={{ color: "#B33A47", margin: "0 10px" }}>·</span>
+
+          <span
+            style={{
+              color: "#B33A47",
+              margin: "0 10px",
+            }}
+          >
+            ·
+          </span>
+
           <span>Next.js</span>
-          <span style={{ color: "#B33A47", margin: "0 10px" }}>·</span>
+
+          <span
+            style={{
+              color: "#B33A47",
+              margin: "0 10px",
+            }}
+          >
+            ·
+          </span>
+
           <span>PostgreSQL</span>
         </div>
       </div>
@@ -227,14 +276,17 @@ export default async function OpengraphImage() {
             marginRight: 12,
           }}
         />
+
         <span
           style={{
             color: "#A1A1AA",
             fontSize: 18,
+            fontWeight: 400,
+            fontFamily: "IBM Plex Mono",
             letterSpacing: 1,
           }}
         >
-          SESSION ACTIVE
+          https://tamil-arsen.dev/
         </span>
       </div>
     </div>,
@@ -248,7 +300,7 @@ export default async function OpengraphImage() {
           style: "normal",
         },
         {
-          name: "IBM Plex Mono",
+          name: "IBM Plex Sans",
           data: bold,
           weight: 700,
           style: "normal",

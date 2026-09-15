@@ -1,9 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
-
-import { useHasMounted } from "@/hooks/use-has-mounted";
 import { cn } from "@/lib/utils";
 
 export function Logo({
@@ -11,23 +8,37 @@ export function Logo({
 }: Readonly<{
   className?: string;
 }>) {
-  const { resolvedTheme } = useTheme();
-  const hasMounted = useHasMounted();
-
-  const src =
-    hasMounted && resolvedTheme === "light"
-      ? "/logo/secondary-word-monogram-light.svg"
-      : "/logo/secondary-word-monogram-dark.svg";
-
   return (
-    <Image
-      src={src}
-      alt="T. Tamil Arsen"
-      width={200}
-      height={146}
-      priority
-      unoptimized
-      className={cn("block h-auto w-auto shrink-0", className)}
-    />
+    <span className="relative block h-auto w-auto shrink-0">
+      <Image
+        src="/logo/secondary-word-monogram-dark.svg"
+        alt="T. Tamil Arsen"
+        width={200}
+        height={146}
+        priority
+        unoptimized
+        className={cn(
+          "block h-auto w-auto transition-opacity duration-200",
+          "dark:opacity-100",
+          "opacity-0",
+          className,
+        )}
+      />
+
+      <Image
+        src="/logo/secondary-word-monogram-light.svg"
+        alt=""
+        aria-hidden="true"
+        width={200}
+        height={146}
+        priority
+        unoptimized
+        className={cn(
+          "absolute inset-0 h-auto w-auto transition-opacity duration-200",
+          "opacity-100 dark:opacity-0",
+          className,
+        )}
+      />
+    </span>
   );
 }
